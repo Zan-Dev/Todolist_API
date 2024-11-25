@@ -1,7 +1,3 @@
-Berikut adalah contoh teks README untuk project **ToDoList API** yang dibuat menggunakan **Laravel** dan **Tailwind CSS**:
-
----
-
 # ToDoList API - Laravel & Tailwind CSS
 
 This project is a simple To-Do List API built with **Laravel** and styled with **Tailwind CSS**. It allows users to manage tasks, providing endpoints for creating, reading, updating, and deleting tasks.

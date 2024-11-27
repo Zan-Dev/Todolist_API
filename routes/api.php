@@ -10,7 +10,11 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // })->middleware('auth:sanctum');
 
+Route::prefix('auth')->group(function(){
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::get('/me', [AuthController::class, 'me'])->middleware(['auth:sanctum']);
+    Route::get('/logout', [AuthController::class, 'logout'])->middleware(['auth:sanctum']);
+});
 
 Route::apiResource('/todolists', TodolistController::class);
 Route::apiResource('/users', UserController::class);
-Route::post('auth/login', [AuthController::class, 'login']);

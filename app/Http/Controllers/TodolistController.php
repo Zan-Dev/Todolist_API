@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Log;
 use App\Http\Resources\TodolistResource;
-use App\Models\Todolist;
+use App\Models\Todos;
 use Dotenv\Exception\ValidationException;
 use Exception;
 use Illuminate\Http\Request;
@@ -16,7 +16,7 @@ class TodolistController extends Controller
      */
     public function index()
     {
-        $todolist = Todolist::latest()->get();
+        $todolist = Todos::latest()->get();
 
         // return response()->json([$todolist], 200);
         return TodolistResource::collection($todolist);
@@ -34,7 +34,7 @@ class TodolistController extends Controller
                 'status' => 'required|boolean|in:0,1',
             ]);
     
-            $todolist = Todolist::create($data);
+            $todolist = Todos::create($data);
 
             return response()->json([
                 'message' => 'Successfully add data',
@@ -62,7 +62,7 @@ class TodolistController extends Controller
      */
     public function show(string $id)
     {
-        $todolist = Todolist::find($id);
+        $todolist = Todos::find($id);
         if (!$todolist) return response()->json(['message' => 'Todolist Not Found'], 404);
         return response()->json($todolist);
     }
@@ -79,7 +79,7 @@ class TodolistController extends Controller
                 'status' => 'required|boolean|in:0,1',
             ]);
     
-            $todolist = Todolist::find($id);
+            $todolist = Todos::find($id);
 
             if (!$todolist) return response()->json(['message' => 'Todolist Not Found'],404);
 
@@ -112,7 +112,7 @@ class TodolistController extends Controller
      */
     public function destroy(string $id)
     {
-        $todolist = Todolist::find($id);
+        $todolist = Todos::find($id);
         if (!$todolist) return response()->json([           
             'message' => 'Todolist Not Found'], 404);
         $todolist->delete();

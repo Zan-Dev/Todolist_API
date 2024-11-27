@@ -11,12 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('todolists', function (Blueprint $table) {
-            $table->id();
+        Schema::create('todos', function (Blueprint $table) {
+            $table->id('id_todos');            
             $table->string('title');
-            $table->string('desc');
+            $table->string('desc');        
+            $table->date('deadline');
             $table->boolean('status')->default(false);
             $table->timestamps();
+
+            $table->foreignId('id_user')
+                    ->constrained('users', 'id_user')
+                    ->onDelete('cascade');
+
         });
     }
 
@@ -25,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('todolists');
+        Schema::dropIfExists('todos');
     }
 };

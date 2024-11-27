@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Todolist extends Model
+class Todos extends Model
 {
     use HasFactory;
-    protected $table = "Todolists";
+    protected $table = "todos";
     protected $fillable = ['title', 'desc', 'status'];
 }
